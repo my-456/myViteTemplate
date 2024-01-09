@@ -1,0 +1,15 @@
+<template>
+  <div>
+    home
+    <el-button type="primary">123</el-button>
+    <el-icon :size="70" color="red">
+      <i-ep-share />
+    </el-icon>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+</script>
+
+<style lang="scss" scoped></style>
