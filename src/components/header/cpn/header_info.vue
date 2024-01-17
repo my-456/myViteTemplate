@@ -1,10 +1,14 @@
 <template>
   <div class="info">
-    <el-avatar
-      @click="showClick"
-      src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-    />
-    <span @click="showClick" class="name">{{ name }}</span>
+    <div class="avatar">
+      <div>
+        <el-avatar
+          @click="showClick"
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        />
+      </div>
+      <div @click="showClick" class="name">{{ name }}</div>
+    </div>
     <el-dropdown ref="dropdown" class="dropdown">
       <el-icon @click="showClick" :size="20" class="el-icon--right">
         <i-ep-arrow-down />
@@ -25,15 +29,17 @@ import { ref, computed } from 'vue'
 import type { DropdownInstance } from 'element-plus'
 import LocalCache from '@/utils/cache'
 import { useRouter } from 'vue-router'
-// const store = useStore()
+import appStore from '@/stores'
 const router = useRouter()
 const dropdown = ref<DropdownInstance>()
-// const name = computed(() => store.state.login.userInfo?.username)
+// 获取用户信息
+const name = computed(() => appStore.useUserStore.userInfo.name)
 const showClick = () => {
   if (!dropdown.value) return
   dropdown.value.handleOpen()
 }
 
+// 退出登录
 const toOut = () => {
   LocalCache.clearCache()
   router.push('/')
@@ -49,10 +55,15 @@ const toOut = () => {
   color: #fff;
   .name {
     margin-left: 10px;
+    white-space: nowrap;
   }
   .dropdown {
     margin: 0 10px;
     color: #fff;
+  }
+  .avatar {
+    display: flex;
+    align-items: center;
   }
 }
 </style>

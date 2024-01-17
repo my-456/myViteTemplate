@@ -15,7 +15,6 @@ export function registerStore(app: App<Element>) {
   pinia.use(piniaPersist)
 
   const loginStore = useLoginStore()
-
   //刷新后执行menu格式化
   loginStore.setRoutes()
 

@@ -11,18 +11,14 @@
         </template>
       </el-dropdown>
     </div>
-    <el-icon size="20" color="#fff"><Rank /></el-icon>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import appStore from '@/stores'
-const navModel = ref(false)
 const route = useRouter()
 const onNavModel = () => {
-  navModel.value = !navModel.value
   appStore.useSettingStore.changeNavModel()
 }
 

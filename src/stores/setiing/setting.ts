@@ -5,7 +5,13 @@ export const useSettingStore = defineStore(
   () => {
     const oneLevelMenus = ref()
     const levelMenus = ref()
-    const navModel = ref()
+    const navModel = ref(false)
+    const isFold = ref(false)
+
+    //控制左侧导航伸缩
+    function changeFold() {
+      isFold.value = !isFold.value
+    }
 
     //切换导航模式
     function changeNavModel() {
@@ -14,7 +20,6 @@ export const useSettingStore = defineStore(
 
     // 当前二级菜单
     function changeLevelMenus(value: any) {
-      console.log('二级菜单', value)
       levelMenus.value = value
     }
 
@@ -27,6 +32,8 @@ export const useSettingStore = defineStore(
       navModel,
       oneLevelMenus,
       levelMenus,
+      isFold,
+      changeFold,
       changeNavModel,
       changeLevelMenus,
       changeOneLevelMenus

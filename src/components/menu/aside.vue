@@ -30,12 +30,11 @@ const route = useRoute()
 const userStore = appStore.useUserStore
 const settingStore = appStore.useSettingStore
 const { userMenus } = storeToRefs(userStore)
-const { levelMenus, navModel } = storeToRefs(settingStore)
-const isCollapse = ref(false)
+const { levelMenus, navModel, isFold } = storeToRefs(settingStore)
+const isCollapse = computed(() => isFold.value)
 
 const Menus = computed(() => {
-  console.log('levelMenus', levelMenus)
-  if (navModel) {
+  if (navModel.value) {
     // 顶部导航模式
     return levelMenus.value
   } else {
@@ -61,7 +60,7 @@ const handleClose = () => {}
     background: #101036;
     color: #fff;
     height: 50px;
-    width: 220px;
+    min-width: 220px;
     display: flex;
     justify-content: center;
     align-items: center;

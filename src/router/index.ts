@@ -16,6 +16,10 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Main',
     component: () => import('../views/main/index.vue'),
     children: []
+  },
+  {
+    path: '/:pathMatch(.*)',
+    component: () => import(/* webpackChunkName: "about" */ '../views/notFount/index.vue')
   }
 ]
 
@@ -31,7 +35,7 @@ router.beforeEach((to) => {
     if (!token) {
       return '/login'
     }
-    if (to.path === '/main') {
+    if (to.path === '/main' || to.path === '/main/') {
       return firstRoute.url
     }
   } else {

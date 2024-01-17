@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header-top">
-      <div class="header-nav" v-if="true">
+      <div class="header-nav" v-if="chekedNav">
         <header-nav />
       </div>
       <div class="help">
@@ -11,14 +11,15 @@
         <header-info />
       </div>
     </div>
-    <!-- <div class="header-bottom">
-      <el-icon @click="onIcon" class="icon" size="26"
-        ><component :is="isFold ? 'Expand' : 'Fold'"
-      /></el-icon>
-      <div class="mianbao">
+    <div class="header-bottom">
+      <el-icon @click="onIcon" color="#222" size="26"
+        ><i-ep-expand v-if="isFold" />
+        <i-ep-fold v-else />
+      </el-icon>
+      <!-- <div class="mianbao">
         <my-breadcrumb :breadcrumbs="breadcrumbs" />
-      </div>
-    </div> -->
+      </div> -->
+    </div>
   </div>
 </template>
 
@@ -26,11 +27,18 @@
 import HeaderNav from './cpn/header_nav.vue'
 import HeaderInfo from './cpn/header_info.vue'
 import HeaderHelp from './cpn/header_help.vue'
+import appStore from '@/stores'
+const chekedNav = computed((v) => appStore.useSettingStore.navModel)
+const isFold = computed((v) => appStore.useSettingStore.isFold)
+const onIcon = () => {
+  appStore.useSettingStore.changeFold()
+}
 </script>
 
 <style lang="less" scoped>
 .header {
   height: 50px;
+  width: 100%;
   .header-top {
     width: 100%;
     height: 100%;
@@ -41,7 +49,7 @@ import HeaderHelp from './cpn/header_help.vue'
       width: 100%;
       height: 100%;
       display: flex;
-      justify-content: center;
+      padding-left: 220px; // justify-content: center;
     }
   }
   .header-bottom {

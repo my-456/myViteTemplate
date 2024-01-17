@@ -28,28 +28,29 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router'
 import LocalCache from '@/utils/cache'
 import appStore from '@/stores'
-import { pathMapToMenu } from '@/utils/nav'
-// const store = useStore()
-const router = useRouter()
+import { pathMapToMenu, setTopNav, pathMapToOneMenu } from '@/utils/nav'
 const route = useRoute()
 let defaultAction = ref('')
 let currentPath = ref(route.path)
+// 路由tree(只渲染所有一级路由)
 const menus = computed(() => appStore.useUserStore.userMenus)
-// 通过当前路由匹配当前路由对象
+// 通过当前路由匹配当前路由对象（返回子路由）
 let menu = pathMapToMenu(menus.value, currentPath.value)
-if (!menu.parentId) {
-  defaultAction = ref(menu.id)
-} else {
-  defaultAction = ref(menu.parentId)
-}
+// 获取一级菜单用来重置导航菜单
+const oneMenu = pathMapToOneMenu(menus.value, menu)
+// 重置导航菜单
+setTopNav(oneMenu)
+// 设置高亮菜单项
+defaultAction = ref(oneMenu.id)
 
 onMounted(() => {
   scrollLeft()
 })
+
+// top菜单左滑
 const scrollLeft = () => {
   const dataBar = document.querySelector('.header-box') as any
   dataBar.scrollTo({
@@ -58,6 +59,7 @@ const scrollLeft = () => {
   })
 }
 
+// top菜单右滑
 const scrollRight = () => {
   const dataBar = document.querySelector('.header-box') as any
   dataBar.scrollTo({
@@ -66,27 +68,17 @@ const scrollRight = () => {
   })
 }
 
+// 点击菜单跳转对应路由
 const handleSelect = (menu: any) => {
-  console.log('menu', menu)
   defaultAction.value = menu.id
   LocalCache.setCache('oneLevelMenus', menu)
-  appStore.useSettingStore.changeOneLevelMenus(menu)
-  // 判断是否有二级菜单
-  if (menu.children) {
-    // 重置二级菜单
-    const levelMenus = menu.children
-    appStore.useSettingStore.changeLevelMenus(levelMenus)
-  } else {
-    const levelMenus = null
-    appStore.useSettingStore.changeLevelMenus(levelMenus)
-    router.push(menu.url ?? '/not-found')
-  }
+  setTopNav(menu)
 }
 </script>
 
 <style lang="less" scoped>
 .header-menu {
-  width: 60%;
+  max-width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -100,7 +92,7 @@ const handleSelect = (menu: any) => {
     align-items: center;
     overflow-y: hidden;
     overflow-x: scroll;
-    padding: 38px 0 25px 0;
+    padding: 38px 0 24px 0;
   }
   .item {
     height: 52px;
