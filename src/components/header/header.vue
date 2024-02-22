@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: muyang
+ * @Date: 2023-12-25 14:36:29
+ * @LastEditors: muayng
+ * @LastEditTime: 2024-02-20 14:07:02
+-->
 <template>
   <div class="header">
     <div class="header-top">
@@ -19,6 +27,9 @@
       <!-- <div class="mianbao">
         <my-breadcrumb :breadcrumbs="breadcrumbs" />
       </div> -->
+      <div style="padding: 0 20px 0 50px; width: 100%">
+        <KeepTab />
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +39,7 @@ import HeaderNav from './cpn/header_nav.vue'
 import HeaderInfo from './cpn/header_info.vue'
 import HeaderHelp from './cpn/header_help.vue'
 import appStore from '@/stores'
+import KeepTab from '../keepTab/keepTab.vue'
 const chekedNav = computed((v) => appStore.useSettingStore.navModel)
 const isFold = computed((v) => appStore.useSettingStore.isFold)
 const onIcon = () => {
@@ -37,7 +49,7 @@ const onIcon = () => {
 
 <style lang="less" scoped>
 .header {
-  height: 50px;
+  height: 45px;
   width: 100%;
   .header-top {
     width: 100%;

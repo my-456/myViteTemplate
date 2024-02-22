@@ -1,6 +1,15 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: muyang
+ * @Date: 2023-12-11 16:23:01
+ * @LastEditors: muayng
+ * @LastEditTime: 2024-02-20 18:04:52
+ */
 import LocalCache from '@/utils/cache'
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
 import { firstRoute } from '@/utils/menus'
+import Empty from '../views/empty/index.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -15,7 +24,13 @@ const routes: Array<RouteRecordRaw> = [
     path: '/main',
     name: 'Main',
     component: () => import('../views/main/index.vue'),
-    children: []
+    children: [
+      // 空页面
+      {
+        path: '/empty',
+        component: Empty
+      }
+    ]
   },
   {
     path: '/:pathMatch(.*)',

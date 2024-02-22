@@ -2,17 +2,16 @@
  * @Descripttion:
  * @version:
  * @Author: muyang
- * @Date: 2023-12-26 16:56:19
+ * @Date: 2024-02-20 14:34:25
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-19 17:01:05
+ * @LastEditTime: 2024-02-20 14:34:33
 -->
 <template>
-  <div>overview</div>
+  <div>X</div>
 </template>
 
-<script lang="ts" setup name="overview">
+<script lang="ts" setup>
 import { ref } from 'vue'
-console.log('over')
 </script>
 
 <style lang="scss" scoped></style>

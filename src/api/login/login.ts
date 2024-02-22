@@ -82,6 +82,7 @@ export function menuRequest(id: number) {
               sort: 1,
               type: 1,
               url: '/main/analysis',
+              isShow: true,
               children: [
                 {
                   children: null,
@@ -92,7 +93,8 @@ export function menuRequest(id: number) {
                   sort: 106,
                   type: 2,
                   url: '/main/datav',
-                  icon: 'House'
+                  icon: 'House',
+                  isShow: true
                 },
                 {
                   children: null,
@@ -104,7 +106,8 @@ export function menuRequest(id: number) {
                   type: 2,
                   url: '/main/overview',
                   icon: 'House',
-                  permission: ['analysis:overview:create', 'analysis:overview:delete']
+                  permission: ['analysis:overview:create', 'analysis:overview:delete'],
+                  isShow: true
                 }
               ]
             },
@@ -120,7 +123,8 @@ export function menuRequest(id: number) {
                   type: 2,
                   url: '/main/menu',
                   icon: 'House',
-                  permission: ['system:menu:create', 'system:menu:update']
+                  permission: ['system:menu:create', 'system:menu:update'],
+                  isShow: true
                 }
               ],
               icon: 'Star',
@@ -129,7 +133,8 @@ export function menuRequest(id: number) {
               sort: 1,
               level: 1,
               type: 1,
-              url: '/main/system'
+              url: '/main/system',
+              isShow: true
             },
             {
               children: null,
@@ -139,7 +144,8 @@ export function menuRequest(id: number) {
               sort: 1,
               level: 1,
               type: 2,
-              url: '/main/user'
+              url: '/main/user',
+              isShow: true
             },
             {
               level: 1,
@@ -149,7 +155,8 @@ export function menuRequest(id: number) {
               name: '部门管理',
               sort: 1,
               type: 2,
-              url: '/main/department'
+              url: '/main/department',
+              isShow: true
             },
             {
               children: [
@@ -162,6 +169,7 @@ export function menuRequest(id: number) {
                   type: 1,
                   url: '/main/role',
                   parentId: '74',
+                  isShow: true,
                   children: [
                     {
                       icon: 'Star',
@@ -172,7 +180,8 @@ export function menuRequest(id: number) {
                       sort: 1,
                       type: 2,
                       url: '/main/role',
-                      permission: ['system:role:create', 'system:role:delete']
+                      permission: ['system:role:create', 'system:role:delete'],
+                      isShow: true
                     }
                   ]
                 }
@@ -183,7 +192,8 @@ export function menuRequest(id: number) {
               sort: 1,
               type: 1,
               level: 1,
-              url: '/main/role'
+              url: '/main/role',
+              isShow: true
             },
             {
               children: null,
@@ -193,7 +203,8 @@ export function menuRequest(id: number) {
               sort: 1,
               type: 2,
               level: 1,
-              url: '/main/department2'
+              url: '/main/department2',
+              isShow: true
             },
             {
               children: null,
@@ -203,7 +214,8 @@ export function menuRequest(id: number) {
               sort: 1,
               type: 2,
               level: 1,
-              url: '/main/department3'
+              url: '/main/department3',
+              isShow: true
             },
             {
               children: null,
@@ -213,7 +225,8 @@ export function menuRequest(id: number) {
               sort: 1,
               type: 2,
               level: 1,
-              url: '/main/department3'
+              url: '/main/department3',
+              isShow: true
             },
             {
               children: null,
@@ -223,7 +236,8 @@ export function menuRequest(id: number) {
               sort: 1,
               type: 2,
               level: 1,
-              url: '/main/department3'
+              url: '/main/department3',
+              isShow: true
             },
             {
               children: null,
@@ -233,7 +247,8 @@ export function menuRequest(id: number) {
               sort: 1,
               type: 2,
               level: 1,
-              url: '/main/department3'
+              url: '/main/department3',
+              isShow: true
             }
           ]
         }

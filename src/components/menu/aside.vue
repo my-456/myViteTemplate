@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: muyang
+ * @Date: 2023-12-25 14:42:13
+ * @LastEditors: muayng
+ * @LastEditTime: 2024-02-20 14:50:28
+-->
 <template>
   <div class="aside">
     <div class="title">
@@ -14,7 +22,9 @@
       @close="handleClose"
     >
       <template v-for="item in Menus" :key="item.id">
-        <sub-menu :menu="item" />
+        <div v-if="item.isShow">
+          <sub-menu :menu="item" />
+        </div>
       </template>
     </el-menu>
   </div>

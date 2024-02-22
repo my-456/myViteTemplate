@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: muyang
+ * @Date: 2023-12-26 16:55:26
+ * @LastEditors: muayng
+ * @LastEditTime: 2024-02-19 17:42:23
+-->
 <template>
   <div>
     <el-date-picker
@@ -14,8 +22,9 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" name="datav" setup>
 import { ref } from 'vue'
+console.log('datav')
 let _minDate = ref(0)
 const value = ref()
 

@@ -1,12 +1,20 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: muyang
+ * @Date: 2023-12-25 14:36:29
+ * @LastEditors: muayng
+ * @LastEditTime: 2024-02-20 14:02:04
+-->
 <template>
   <div class="info">
     <div class="avatar">
-      <div>
-        <el-avatar
-          @click="showClick"
-          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-        />
-      </div>
+      <el-avatar
+        @click="showClick"
+        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        :size="26"
+      />
+
       <div @click="showClick" class="name">{{ name }}</div>
     </div>
     <el-dropdown ref="dropdown" class="dropdown">

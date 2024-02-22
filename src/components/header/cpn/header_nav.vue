@@ -85,7 +85,7 @@ const handleSelect = (menu: any) => {
   justify-content: space-between;
   margin: 0 auto;
   overflow: hidden;
-
+  font-size: 12px;
   .header-box {
     width: 100%;
     display: flex;

@@ -4,7 +4,7 @@
  * @Author: muyang
  * @Date: 2023-12-25 14:40:43
  * @LastEditors: muayng
- * @LastEditTime: 2024-01-17 19:32:56
+ * @LastEditTime: 2024-02-20 21:29:23
 -->
 <template>
   <div class="main">
@@ -13,7 +13,11 @@
       <el-container>
         <el-header><Header /></el-header>
         <el-main>
-          <router-view></router-view>
+          <router-view v-slot="{ Component }">
+            <keep-alive :include="cachedViews">
+              <component :is="Component" />
+            </keep-alive>
+          </router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -25,6 +29,9 @@ import Aside from '@/components/menu/aside.vue'
 import Header from '@/components/header/header.vue'
 import appStore from '@/stores'
 const isCollapse = computed(() => appStore.useSettingStore.isFold)
+const cachedViews = computed(() => {
+  return appStore.useSettingStore.cachedViews.map((v) => v.name)
+})
 </script>
 <style lang="scss" scoped>
 .main {
@@ -39,7 +46,7 @@ const isCollapse = computed(() => appStore.useSettingStore.isFold)
 }
 .el-header {
   width: 100%;
-  height: 100px;
+  height: 90px;
   padding: 0;
 }
 </style>

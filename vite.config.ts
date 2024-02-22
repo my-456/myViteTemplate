@@ -1,12 +1,20 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: muyang
+ * @Date: 2023-12-11 16:23:01
+ * @LastEditors: muayng
+ * @LastEditTime: 2024-02-19 17:29:56
+ */
 import { fileURLToPath, URL } from 'node:url'
 import element from './src/plugins/element'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx(), ...element],
+  plugins: [vue(), vueJsx(), VueSetupExtend(), ...element],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

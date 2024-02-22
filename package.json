@@ -19,7 +19,9 @@
     "lodash": "^4.17.21",
     "pinia": "^2.1.7",
     "pinia-plugin-persist": "^1.0.0",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "vite-plugin-inspect": "^0.8.1",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },
