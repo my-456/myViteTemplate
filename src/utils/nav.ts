@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: muyang
+ * @Date: 2024-01-04 20:32:44
+ * @LastEditors: muayng
+ * @LastEditTime: 2024-02-28 20:17:14
+ */
 import { Breadcrumb } from '@/element-ui/breadcrumb/index'
 import router from '@/router'
 import appStore from '@/stores'

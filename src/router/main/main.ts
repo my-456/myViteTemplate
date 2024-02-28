@@ -4,10 +4,19 @@
  * @Author: muyang
  * @Date: 2023-12-26 14:02:32
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-20 20:14:40
+ * @LastEditTime: 2024-02-22 17:00:53
  */
 
 const routerList = [
+  {
+    name: 'home',
+    path: '/main/home',
+    meta: {
+      title: '首页',
+      keepAlive: true
+    },
+    component: () => import('@/views/home/index.vue')
+  },
   // 系统数据
   {
     name: 'datav',

@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { MenuType } from '../index'
+import type { MenuType } from '../type'
 import { useRouter } from 'vue-router'
 defineProps<{
   menu: MenuType
@@ -32,3 +32,4 @@ const onMenuItem = (v: any) => {
   border: 2px solid #fff;
 }
 </style>
+../type

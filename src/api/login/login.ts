@@ -75,6 +75,17 @@ export function menuRequest(id: number) {
         data: {
           userMenus: [
             {
+              children: null,
+              id: '30',
+              level: 2,
+              name: '首页',
+              sort: 106,
+              type: 2,
+              url: '/main/home',
+              icon: 'House',
+              isShow: true
+            },
+            {
               icon: 'Star',
               id: '1',
               name: '系统总览',

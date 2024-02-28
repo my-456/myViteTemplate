@@ -4,7 +4,7 @@
  * @Author: muyang
  * @Date: 2024-02-19 10:24:53
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-20 21:28:38
+ * @LastEditTime: 2024-02-22 17:00:00
 -->
 <template>
   <div class="keepTab">
@@ -46,6 +46,7 @@ watch(
   route,
   (newRoute, oldRoute) => {
     defaultRouteTitle.value = newRoute.meta.title
+    console.log('defaultRouteTitle.value', newRoute)
     defaultRoutePath.value = newRoute.path
     defaultRouteName.value = newRoute.name
     if (newRoute.meta && newRoute.meta.keepAlive) {

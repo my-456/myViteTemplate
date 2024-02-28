@@ -4,7 +4,7 @@
  * @Author: muyang
  * @Date: 2023-12-25 14:42:13
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-20 14:50:28
+ * @LastEditTime: 2024-02-26 17:25:42
 -->
 <template>
   <div class="aside">
@@ -40,6 +40,7 @@ const route = useRoute()
 const userStore = appStore.useUserStore
 const settingStore = appStore.useSettingStore
 const { userMenus } = storeToRefs(userStore)
+console.log('userMenus', userMenus)
 const { levelMenus, navModel, isFold } = storeToRefs(settingStore)
 const isCollapse = computed(() => isFold.value)
 
