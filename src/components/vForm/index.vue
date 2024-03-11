@@ -4,7 +4,7 @@
  * @Author: muyang
  * @Date: 2024-02-23 10:02:12
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-28 17:17:52
+ * @LastEditTime: 2024-02-29 10:56:46
 -->
 <template>
   <v-card>
@@ -46,9 +46,11 @@
       </template>
       <template v-if="prop.showBtn">
         <el-form-item class="btn-box">
-          <template v-for="item in btnList" :key="item.id">
-            <el-button :type="item.type" @click="onClick(item)">{{ item.name }}</el-button>
-          </template>
+          <slot name="button">
+            <template v-for="item in defaultbtnlist" :key="item.id">
+              <el-button :type="item.type" @click="onClick(item)">{{ item.name }}</el-button>
+            </template>
+          </slot>
         </el-form-item>
       </template>
     </el-form>
@@ -62,6 +64,7 @@ import { ref, computed } from 'vue'
 import FormItem from './components/FormItem.vue'
 import type { FormItems } from './interface/type'
 import { useVModel } from '@/utils/use-v-model'
+import { cloneDeep } from 'lodash'
 interface Props {
   formItems: FormItems[]
   params?: any
@@ -72,30 +75,50 @@ interface Props {
   labelWidth?: boolean
   btnList?: any
   rules?: any
+  filterParams?: Function
+  submit?: Function
+  reset?: Function
+}
+
+type BtnType = 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text' | ''
+
+interface IBtnListItem {
+  name: string
+  id: string
+  type: BtnType
 }
 
 const prop = defineProps<Props>()
 const editable = computed(() => !!prop.editable)
-const emit = defineEmits(['update:params'])
+const emit = defineEmits(['update:params', 'submit', 'reset'])
 const parmasModel = useVModel(prop, 'params', emit)
-const defaultbtnlist = [
-  { name: '重置', id: 'reset', type: 'default' },
+const defaultbtnlist: IBtnListItem[] = [
+  { name: '重置', id: 'reset', type: '' },
   { name: '查询', id: 'query', type: 'primary' }
 ]
 const btnList = computed(() => {
   return prop.btnList ? prop.btnList : defaultbtnlist
 })
-// tsx组件
-// const FormItem = formItem()
+
 const FormRef = ref<FormInstance>()
 
 // 表单按钮
-function onClick(data: { onClick?: () => void }) {
-  if (!data.onClick) {
-    if (data.id === 'query') fetch()
-    if (data.id === 'reset') resetFields()
-  } else {
-    data.onClick()
+function onClick(data: IBtnListItem) {
+  //   if (!data.onClick) {
+  //     if (data.id === 'query') fetch()
+  //     if (data.id === 'reset') resetFields()
+  //   } else {
+  //     data.onClick()
+  //   }
+  if (data.id === 'query') {
+    prop.submit?.()
+  }
+  if (data.id === 'reset') {
+    if (prop.reset) {
+      prop.reset()
+    } else {
+      resetFields()
+    }
   }
 }
 
@@ -113,7 +136,11 @@ async function resetFields() {
 
 const fetch = () => {
   validate().then((res) => {
-    console.log('点击查询', validate())
+    let params = cloneDeep(parmasModel.value)
+    if (prop.filterParams) {
+      params = prop.filterParams(params)
+    }
+    console.log('点击查询', params)
   })
 }
 

@@ -5,7 +5,7 @@ enum LoginApi {
   userInfo = '/users/',
   menus = '/role/'
 }
-const isLogin = true
+const isLogin = false
 export function loginRequest(params: LoginParams) {
   if (isLogin) {
     return new Promise((resolve, reject) => {
@@ -29,7 +29,7 @@ export function loginRequest(params: LoginParams) {
   }
 }
 
-const isUserInfoRequest = true
+const isUserInfoRequest = false
 export function userInfoRequest(id: number) {
   if (isUserInfoRequest) {
     return new Promise((resolve, reject) => {

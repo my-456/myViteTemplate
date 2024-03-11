@@ -4,14 +4,18 @@
  * @Author: muyang
  * @Date: 2024-02-23 17:06:01
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-27 10:32:42
+ * @LastEditTime: 2024-03-07 16:28:13
  */
 import VForm from './vForm'
-import vCard from './vCard'
+import VCard from './vCard'
+import VTable from './vTable'
+import SearchTable from './searchTable'
 import { App } from 'vue'
 const components: any = {
   VForm,
-  vCard
+  VCard,
+  VTable,
+  SearchTable
 }
 
 const GlobalComponents = (app: App) => {

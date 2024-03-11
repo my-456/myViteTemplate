@@ -4,7 +4,7 @@
  * @Author: muyang
  * @Date: 2024-02-27 15:12:47
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-28 17:48:15
+ * @LastEditTime: 2024-03-11 13:21:55
 -->
 <template>
   <div ref="testRef">
@@ -20,8 +20,6 @@ const props = defineProps<{
   data: Object
   editable: boolean
 }>()
-
-console.log(props.params)
 
 const emits = defineEmits(['update:cpnModel'])
 

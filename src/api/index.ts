@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: muyang
+ * @Date: 2023-12-22 10:35:03
+ * @LastEditors: muayng
+ * @LastEditTime: 2024-03-07 17:47:58
+ */
 let pool: any = {}
 
 const files = import.meta.glob('./*/*.ts')
@@ -6,6 +14,7 @@ for (const path in files) {
   if (!module.register) {
     continue
   }
+
   // 在这里处理导入的模块
   pool = Object.assign({}, module, pool)
 }
@@ -26,11 +35,10 @@ const Call = (method: string, param?: any, ...param2: any) => {
   }
 }
 const install = (app: any) => {
-  app.config.globalProperties.$api = (method: string, param?: any, ...param2: any) => {
+  app.provide('$api', (method: string, param?: any, ...param2: any) => {
     return Call(method, param, ...param2)
-  }
-  app.config.globalProperties.toJSON = (a: any) => {
-  }
+  })
+  app.config.globalProperties.toJSON = (a: any) => {}
 }
 
 declare interface Call {
