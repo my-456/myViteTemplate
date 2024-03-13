@@ -4,7 +4,7 @@
  * @Author: muyang
  * @Date: 2024-03-07 14:42:51
  * @LastEditors: muayng
- * @LastEditTime: 2024-03-11 15:00:48
+ * @LastEditTime: 2024-03-13 09:48:46
 -->
 <template>
   <div>
@@ -12,6 +12,7 @@
       ref="FormRef"
       v-model:params="params"
       api="getList"
+      height="350"
       :init="true"
       :showBtn="true"
       :editable="true"
@@ -22,8 +23,14 @@
       style="width: 100%"
       v-model:selection="selection"
       rowId="id"
+      reserve-selection
       :paginationProps="paginationProps"
       :filterParams="filterParams"
+      :tableOptions="{
+        'header-cell-style': {
+          'background-color': '#e8e8e8'
+        }
+      }"
     >
       <!-- form -->
       <template #header>
@@ -44,7 +51,7 @@
         <div>tableFooter</div>
       </template>
       <template #handle>
-        <el-button>删除</el-button>
+        <el-button type="primary" link>删除</el-button>
       </template>
     </SearchTable>
   </div>
@@ -181,7 +188,10 @@ const formData = reactive<FormItems[]>([
 
 const columns = [
   {
-    type: 'selection'
+    type: 'selection',
+    props: {
+      'reserve-selection': true
+    }
   },
   {
     label: '序号',

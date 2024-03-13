@@ -75,7 +75,9 @@ declare module 'vue' {
     Table: typeof import('./../../components/vTable/component/table.vue')['default']
     TableColumns: typeof import('./../../components/vTable/component/tableColumns.vue')['default']
     VCard: typeof import('./../../components/vCard/index.vue')['default']
+    VEcharts: typeof import('./../../components/vEcharts/index.vue')['default']
     VForm: typeof import('./../../components/vForm/index.vue')['default']
+    VScaleBox: typeof import('./../../components/vScaleBox/index.vue')['default']
     VTable: typeof import('./../../components/vTable/index.vue')['default']
   }
 }

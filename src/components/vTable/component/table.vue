@@ -4,7 +4,7 @@
  * @Author: muyang
  * @Date: 2024-02-29 14:57:19
  * @LastEditors: muayng
- * @LastEditTime: 2024-03-11 14:38:18
+ * @LastEditTime: 2024-03-12 11:00:16
 -->
 <template>
   <component :is="render"></component>
@@ -124,6 +124,7 @@ const vTable = () => (
         data={props.data}
         height={props.height}
         {...props.tableOptions}
+        row-key={props.rowId}
       >
         {tableColumns()}
       </el-table>
@@ -167,8 +168,10 @@ const toggleSelection = () => {
         })
       })
     })
-  } else {
-    ;(table.value as any).clearSelection()
   }
+
+  //   else {
+  //     ;(table.value as any).clearSelection()
+  //   }
 }
 </script>

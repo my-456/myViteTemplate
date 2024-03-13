@@ -4,7 +4,7 @@
  * @Author: muyang
  * @Date: 2024-02-27 10:13:16
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-27 11:04:36
+ * @LastEditTime: 2024-03-12 17:35:33
 -->
 <template>
   <div class="v-card">
@@ -25,5 +25,6 @@ defineProps<IShadow>()
 <style lang="scss" scoped>
 .v-card {
   width: 100%;
+  margin: 10px;
 }
 </style>

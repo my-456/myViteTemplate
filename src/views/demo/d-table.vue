@@ -4,10 +4,10 @@
  * @Author: muyang
  * @Date: 2024-02-29 15:44:54
  * @LastEditors: muayng
- * @LastEditTime: 2024-03-11 14:08:20
+ * @LastEditTime: 2024-03-13 09:44:59
 -->
 <template>
-  <div>
+  <div class="table-box">
     <vTable
       :data="tableData"
       :columns="columns"
@@ -17,6 +17,11 @@
       refTable="tableRef"
       rowId="id"
       :paginationProps="paginationProps"
+      :tableOptions="{
+        'header-cell-style': {
+          'background-color': '#e8e8e8'
+        }
+      }"
     >
       <template #tableHeader>
         <el-button type="primary"> ceshi </el-button>
@@ -28,7 +33,7 @@
         <div>插槽测试</div>
       </template>
       <template #handle>
-        <el-button>删除</el-button>
+        <el-button type="primary" link>删除</el-button>
       </template>
     </vTable>
   </div>
@@ -132,4 +137,10 @@ const tableData = [
 ]
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// .table-box {
+//   .el-table {
+//     background-color: red !important;
+//   }
+// }
+</style>

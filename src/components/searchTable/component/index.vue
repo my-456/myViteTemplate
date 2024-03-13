@@ -27,7 +27,8 @@
       :rowId="props.rowId"
       :page="basePage"
       :paginationProps="basePaginationProps"
-      height="450px"
+      :height="props.height"
+      :tableOptions="props.tableOptions"
     >
       <template v-for="(value, key) in $slots" #[key]="row" :key="key">
         <slot :name="key" v-bind="row"></slot>
@@ -48,6 +49,7 @@ interface Props {
   showBtn?: boolean // 是否显示按钮（默认：true）
   labelPosition?: any // label位置
   inline?: boolean
+  height?: string | number
   editable?: boolean // 是否只读
   labelWidth?: boolean // label宽度
   rules?: any // 表单校验

@@ -4,51 +4,33 @@
  * @Author: muyang
  * @Date: 2023-12-26 16:55:26
  * @LastEditors: muayng
- * @LastEditTime: 2024-02-19 17:42:23
+ * @LastEditTime: 2024-03-12 17:35:51
 -->
 <template>
   <div>
-    <el-date-picker
-      v-model="value"
-      type="datetimerange"
-      range-separator="至"
-      start-placeholder="开始日期"
-      end-placeholder="结束日期"
-      :picker-options="pickerOptions"
-      @blur="handlePickerBlur"
-      value-format="yyyy-MM-dd HH:mm:ss"
-    >
-    </el-date-picker>
+    <VScaleBox>
+      <DBarCharts></DBarCharts>
+      <div class="cahrt-box">
+        <DPieCharts></DPieCharts>
+        <DGraphCharts></DGraphCharts>
+        <DRadarCharts></DRadarCharts>
+      </div>
+      <DLineCharts />
+    </VScaleBox>
   </div>
 </template>
 
 <script lang="ts" name="datav" setup>
 import { ref } from 'vue'
-console.log('datav')
-let _minDate = ref(0)
-const value = ref()
-
-const pickerOptions = ref({
-  disabledDate(time: any) {
-    const limit = Date.now() - 3600 * 1000 * 24 * 30
-    if (_minDate.value) {
-      return (
-        time.getTime() > _minDate.value + 3600 * 1000 * 24 ||
-        time.getTime() < _minDate.value - 3600 * 1000 * 24
-      )
-    } else {
-      return time.getTime() > Date.now() || time.getTime() < limit
-    }
-  },
-  onPick({ maxDate, minDate }: any) {
-    console.log('minDate', minDate)
-    _minDate.value = minDate && new Date(minDate).getTime()
-  }
-})
-
-const handlePickerBlur = () => {
-  _minDate.value = 0
-}
+import DBarCharts from '../demo/d-bar-charts.vue'
+import DPieCharts from '../demo/d-pie-charts.vue'
+import DGraphCharts from '../demo/d-graph-charts.vue'
+import DRadarCharts from '../demo/d-radar-charts.vue'
+import DLineCharts from '../demo/d-line-charts.vue'
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.cahrt-box {
+  display: flex;
+}
+</style>
